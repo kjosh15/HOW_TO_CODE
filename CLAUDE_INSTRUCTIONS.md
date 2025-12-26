@@ -1,6 +1,10 @@
-# Instructions for Claude Code / Codex
+# Instructions for AI Coding Agents
 
-**Copy this entire file to your AI assistant when starting a new project.**
+**For Claude Code, Codex, Gemini, or any AI coding assistant.**
+
+Copy this to your assistant, or add to your global config:
+- Claude Code: `~/.claude/AGENTS.md`
+- Codex: `~/.codex/AGENTS.md`
 
 ---
 
