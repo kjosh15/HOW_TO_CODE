@@ -1,0 +1,11 @@
+# Local overrides (not committed)
+CLAUDE.local.md
+.env
+.env.local
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

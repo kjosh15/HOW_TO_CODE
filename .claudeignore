@@ -1,0 +1,21 @@
+# Build artifacts
+*.zip
+*.tar.gz
+dist/
+build/
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Large generated files
+coverage/
+*.log
+
+# System files
+.DS_Store
+.git/
+
+# Archives and old frameworks
+*-extracted/
