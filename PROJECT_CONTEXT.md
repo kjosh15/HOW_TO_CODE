@@ -37,6 +37,10 @@ docs/          # [Documentation]
 [TODO]         # Type check
 [TODO]         # Format
 
+# Security
+snyk test      # Check dependencies for vulnerabilities
+snyk code test # Static code analysis
+
 # Build
 [TODO]         # Build for production
 ```
