@@ -21,19 +21,50 @@ launchpad/
 
 ## Quick Start
 
-### Option 0: Global Config (Recommended)
+### Option 0: Auto-Prompt Hook (Recommended)
 
-Add to `~/.claude/AGENTS.md` (or `~/.codex/AGENTS.md`) so the agent auto-suggests Launchpad for any unconfigured project:
+Add a SessionStart hook so Claude automatically prompts when you start in an unconfigured directory.
 
-```markdown
-## Auto-Setup Check
+**1. Create the hook script** at `~/.claude/hooks/check-launchpad.sh`:
 
-**When starting in a directory without AGENTS.md or CLAUDE.md:**
-→ Suggest: "This project isn't configured yet. Want me to set it up with Launchpad?"
+```bash
+#!/bin/bash
+# Skip home/system directories
+if [[ "$PWD" == "$HOME" ]] || [[ "$PWD" == "/" ]] || [[ "$PWD" == /tmp* ]]; then
+    exit 0
+fi
 
-If yes, run:
-curl -fsSL https://raw.githubusercontent.com/kjosh15/launchpad/main/bootstrap.sh | bash
+# Prompt if no config found
+if [[ ! -f "AGENTS.md" ]] && [[ ! -f "CLAUDE.md" ]] && [[ ! -f ".claude/CLAUDE.md" ]]; then
+    echo "📋 This project isn't configured yet."
+    echo "Set up with Launchpad? Run:"
+    echo "  curl -fsSL https://raw.githubusercontent.com/kjosh15/launchpad/main/bootstrap.sh | bash"
+fi
+exit 0
 ```
+
+**2. Make it executable:** `chmod +x ~/.claude/hooks/check-launchpad.sh`
+
+**3. Add to `~/.claude/settings.json`:**
+
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/hooks/check-launchpad.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Now Claude will auto-prompt in any unconfigured project directory.
 
 ### Option 1: Bootstrap Script (Existing Projects)
 
