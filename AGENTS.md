@@ -116,6 +116,21 @@ When something goes wrong:
 4. Add regression test for the bug
 5. Then fix with confidence
 
+## Security Scans (Snyk)
+
+Run security scans at key moments:
+
+| When | Command | Purpose |
+|------|---------|---------|
+| After adding dependencies | `snyk test` | Check for vulnerable packages |
+| Before PR/merge | `snyk code test` | Static analysis for security issues |
+| On user request | `snyk test` or `snyk code test` | Ad-hoc security check |
+
+If vulnerabilities found:
+1. Report severity and affected packages
+2. Suggest remediation (`snyk fix` or manual upgrade)
+3. Don't ignore high/critical issues without user approval
+
 ## Communication
 
 - Be direct about blockers and uncertainties
