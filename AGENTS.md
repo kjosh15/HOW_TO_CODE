@@ -44,6 +44,7 @@ PLAN → RED → GREEN → REFACTOR → VERIFY
 ### 5. VERIFY
 - Run full test suite before claiming completion
 - Check linting/type errors
+- Run security scan: `snyk test` (dependencies) or `snyk code test` (static analysis)
 - Evidence before assertions - never claim "fixed" without proof
 
 ## Workflow Skills
