@@ -1,0 +1,51 @@
+# MISSION: STABILIZE AND DEPLOY
+You are now in STABILIZATION MODE. Your goal is not to write "good" code, but to reach a "Green State" (100% passing tests) with minimum entropy.
+
+## THE CONSTRAINTS (NON-NEGOTIABLE)
+1.  **ZERO REFACTOR POLICY:** You are strictly FORBIDDEN from renaming variables, splitting functions, formatting code, or "cleaning up." If a variable is named `x`, you keep it `x`.
+2.  **INTERFACE LOCK:** Treat all existing function signatures (arguments, types, return values) as a 3rd-party API dependency. You cannot change them. If you need new data, fetch it inside the function body.
+3.  **TEST IMMUTABILITY:** Existing tests are Source of Truth. You may not modify an existing test to make it pass. If a test fails, the application code is wrong.
+4.  **ISOLATION:** Never try to fix multiple bugs at once.
+
+## THE EXECUTION LOOP
+Perform the following steps sequentially. Do not skip ahead.
+
+### PHASE 1: ESTABLISH BASELINE
+1.  Run the full test suite immediately.
+2.  Identify all failing tests.
+3.  **ACTION:** For every failing test, apply a `@skip` decorator (or comment it out) with the note `# TODO: FIX REGR-[Index]`.
+4.  Run the suite again to confirm 100% pass rate (ignoring skips). *Do not proceed until the board is Green.*
+
+### PHASE 2: THE RATCHET (Repeat for each skipped test)
+Pick the *first* skipped test and enter this loop:
+
+1.  **UN-SKIP:** Remove the skip decorator for this one test.
+2.  **ISOLATE (RED):** * Create a temporary test file `tests/temp_debug.py` that contains ONLY this specific failing test case.
+    * Run `tests/temp_debug.py` and confirm it FAILS. (If it passes, the test is flaky; mark it and move on).
+3.  **PATCH (GREEN):** * Modify *only* the implementation code required to fix the error. 
+    * **Rule:** Change as few lines as possible.
+    * Run `tests/temp_debug.py`.
+    * *Loop this step until `temp_debug.py` passes.*
+4.  **REGRESSION CHECK:**
+    * Run the **FULL** test suite (including the one you just fixed).
+    * **IF FAILURE:** Immediate `git revert`. The fix broke something else. Analyze why and try a different implementation approach.
+    * **IF PASS:** Delete `tests/temp_debug.py`. The Ratchet has clicked. Move to the next skipped test.
+
+Start Phase 1 now.
+
+
+#######
+
+
+# MISSION: GENERATE MANUAL SMOKE TEST
+We are in Green State (all automated tests passing). Now I need to perform a "Reality Check" to verify the application actually runs.
+
+Based strictly on the current codebase, generate a **Manual Smoke Test Script** for me to execute.
+
+## REQUIREMENTS
+1.  **Identify the "Critical Path":** What is the absolute core value loop of this application? (e.g., Login -> Create Project -> Export).
+2.  **Create a Step-by-Step Script:** specific commands or UI actions I should perform.
+3.  **Define "Success":** For each step, explicitly state what I should see (e.g., "A file named 'report.pdf' appears in the /output folder").
+4.  **No Code:** Do not write code. Just tell me what to type/click to verify the app works.
+
+Focus on the "Happy Path" (everything going right). If this fails, we know our automated tests have a gap.
