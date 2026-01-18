@@ -197,31 +197,55 @@ Local overrides (not committed to git):
 
 ## Replicating This Setup
 
-To replicate on a new machine:
+Global config is stored in a separate repo for easy replication.
 
-1. **Install Claude Code**
+### New Machine Setup
 
-2. **Create global config:**
-   ```bash
-   mkdir -p ~/.claude/hooks
-   # Copy CLAUDE.md and AGENTS.md from this repo
-   ```
+```bash
+# 1. Clone the config repo
+git clone git@github.com:kjosh15/claude-config.git ~/.claude
 
-3. **Add marketplaces:**
-   ```
-   /plugin marketplace add obra/superpowers-marketplace
-   /plugin marketplace add anthropics/skills
-   ```
+# 2. Generate machine-specific settings
+~/.claude/install.sh
 
-4. **Install plugins:**
-   ```
-   /plugin install superpowers@superpowers-marketplace
-   /plugin install episodic-memory@superpowers-marketplace
-   ```
+# 3. Install Claude Code
+npm install -g @anthropic-ai/claude-code
 
-5. **Configure hooks** in settings.json
+# 4. Launch and install plugins
+claude
+# Run: /plugin marketplace add obra/superpowers-marketplace
+# Run: /plugin install superpowers@superpowers-marketplace
+# Run: /plugin install episodic-memory@superpowers-marketplace
+```
 
-6. **Test:** Launch Claude Code in any directory and verify setup prompt appears
+### How the Template System Works
+
+Settings are portable via a template system:
+
+- `settings.json.template` - Tracked in git, has `__HOME__` and `__HOSTNAME__` placeholders
+- `settings.json` - Generated locally by install.sh (gitignored)
+- `install.sh` - Substitutes placeholders with machine-specific values
+
+This allows the same config repo to work on machines with different usernames or hostnames.
+
+### Syncing Changes Between Machines
+
+```bash
+# On the machine where you made changes
+cd ~/.claude && git add -A && git commit -m "Description" && git push
+
+# On other machines
+cd ~/.claude && git pull && ./install.sh
+```
+
+### Project Auto-Setup
+
+Run `claude --init` in any unconfigured directory to auto-bootstrap with HOW_TO_CODE:
+
+```bash
+cd ~/new-project
+claude --init    # Runs Setup hook, bootstraps if no CLAUDE.md/AGENTS.md
+```
 
 ## Maintenance
 
