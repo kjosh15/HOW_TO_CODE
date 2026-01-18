@@ -25,3 +25,7 @@ See PROJECT_CONTEXT.md for project-specific commands.
 
 @.claude/rules/architecture.md
 @.claude/rules/testing.md
+
+## Session Tracking
+Total Claude sessions: 1
+Last session: 2026-01-18 17:46:04
