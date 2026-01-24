@@ -62,6 +62,66 @@ Use these SuperPowers skills at appropriate moments:
 | After significant code | `superpowers:requesting-code-review` |
 | Receiving feedback | `superpowers:receiving-code-review` |
 
+## Ralph Loop (Optional Autonomous Mode)
+
+Ralph Loop is an **optional** execution strategy for well-defined tasks. It runs the TDD ratchet autonomously in a loop until completion.
+
+### When to Use Ralph
+
+| Good Fit | Not a Good Fit |
+|----------|----------------|
+| Greenfield features with clear PRD | Quick bug fixes |
+| "Walk away" autonomous work | Exploratory/research tasks |
+| Getting tests to pass | Tasks needing human judgment |
+| Tasks with automatic verification | One-shot operations |
+
+### Setup
+
+1. Copy templates from `templates/ralph/`:
+   - `PLAN.md` - Requirements and phases
+   - `PROGRESS.md` - Iteration tracking
+
+2. Fill in PLAN.md from your PRD or requirements
+
+### Running Ralph
+
+```bash
+/ralph-loop "
+Implement features from PLAN.md.
+
+Process:
+1. Read PLAN.md for requirements
+2. Read PROGRESS.md for current state
+3. Follow TDD: Write failing test (RED) → Implement (GREEN) → Refactor
+4. Update PROGRESS.md after each task
+5. Repeat until phase complete
+6. Output <promise>PHASE_COMPLETE</promise> when done
+
+If stuck after 10 iterations:
+- Document blockers in PROGRESS.md
+- List what was attempted
+- Suggest alternative approaches
+" --max-iterations 25 --completion-promise "PHASE_COMPLETE"
+```
+
+### Key Rules
+
+- **Always set `--max-iterations`** - 20-50 is reasonable
+- **Include escape hatch instructions** - What to do if stuck
+- **Clear completion criteria** - Agent must know when done
+- **Review results** - Don't blindly trust autonomous output
+
+### Manual vs Ralph
+
+The core TDD process is the same - Ralph just automates the iteration:
+
+```
+Manual:     You guide each RED → GREEN → REFACTOR cycle
+Ralph:      Agent runs cycles autonomously, you review results
+```
+
+Use manual TDD for most work. Reach for Ralph when you want to kick off a well-defined task and check back later.
+
 ## Anti-Patterns to Avoid
 
 ### Testing Anti-Patterns
