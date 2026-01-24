@@ -56,6 +56,7 @@ echo ""
 echo "Creating directory structure..."
 mkdir -p .claude/rules
 mkdir -p docs/decisions
+mkdir -p docs/ralph
 
 # Download files
 if command -v curl &> /dev/null && [ "$1" != "--local" ]; then
