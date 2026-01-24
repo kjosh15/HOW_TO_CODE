@@ -102,6 +102,9 @@ echo "  1. Edit PROJECT_CONTEXT.md with your project details"
 echo "  2. Review .claude/rules/ and customize if needed"
 echo "  3. Run your first command with Claude Code"
 echo ""
+echo "Ralph Loop templates available in docs/ralph/"
+echo "  - Copy PLAN.md to project root when using /ralph-loop"
+echo ""
 
 # Validate placeholder check
 if grep -q "\[PROJECT_NAME\]" PROJECT_CONTEXT.md 2>/dev/null; then
