@@ -84,6 +84,11 @@ if command -v curl &> /dev/null && [ "$1" != "--local" ]; then
             curl -fsSL "$REPO_URL/templates/$TEMPLATE/.claude/rules/golden-rules.md" -o .claude/rules/golden-rules.md
         fi
     fi
+
+    # Always include Ralph templates (for autonomous TDD loops)
+    echo "Adding Ralph workflow templates..."
+    curl -fsSL "$REPO_URL/templates/ralph/PLAN.md" -o docs/ralph/PLAN.md
+    curl -fsSL "$REPO_URL/templates/ralph/PROGRESS.md" -o docs/ralph/PROGRESS.md
 else
     echo -e "${RED}Error: curl not found. Please copy files manually.${NC}"
     exit 1
