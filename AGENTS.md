@@ -21,6 +21,7 @@ PLAN → RED → GREEN → REFACTOR → VERIFY
 ### 1. PLAN
 - Understand requirements before coding
 - Use brainstorming for non-trivial features
+- For large/greenfield work, apply module decomposition (see `.claude/rules/module-decomposition.md`)
 - Break complex work into small, testable increments
 - Create TodoWrite items for tracking
 
