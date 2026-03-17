@@ -21,7 +21,7 @@ Before writing the design doc, output a module map and get user approval:
 |--------|-----------------------------|----------|--------------|
 | ...    | ...                         | ~NNN     | yes/no       |
 
-- Aim for 5–15 modules
+- Aim for no more than 15 modules; use as few as the problem naturally requires
 - "Independent?" = can be built without any other module being done first
 - Include this table as a "Module Map" section in the design doc
 - **Do not proceed to the rest of the design until the user approves the module map**
