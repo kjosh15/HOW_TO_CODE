@@ -28,5 +28,5 @@ See PROJECT_CONTEXT.md for project-specific commands.
 @.claude/rules/module-decomposition.md
 
 ## Session Tracking
-Total Claude sessions: 2
-Last session: 2026-01-28 22:28:03
+Total Claude sessions: 3
+Last session: 2026-03-17
