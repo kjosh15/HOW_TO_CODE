@@ -25,6 +25,7 @@ See PROJECT_CONTEXT.md for project-specific commands.
 
 @.claude/rules/architecture.md
 @.claude/rules/testing.md
+@.claude/rules/module-decomposition.md
 
 ## Session Tracking
 Total Claude sessions: 2
