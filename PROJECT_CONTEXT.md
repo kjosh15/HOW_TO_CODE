@@ -2,77 +2,71 @@
 
 ## Identity
 
-**[PROJECT_NAME]**: [Brief description of what this project does]
+**HOW_TO_CODE**: Methodology, rules, and workflow documentation for LLM-assisted software development using Claude Code.
 
 ## Configuration
 
 | Setting | Value |
 |---------|-------|
-| Port | [e.g., 3000] |
-| Database | [e.g., postgres:5432] |
-| Language | [e.g., Python 3.11, Node 20] |
-| Package Manager | [e.g., uv, npm, pnpm] |
+| Type | Documentation / config repo (no runtime) |
+| Language | Markdown |
+| Package Manager | None |
 
 ## Key Paths
 
 ```
-src/           # [Source code location]
-tests/         # [Test files location]
-docs/          # [Documentation]
+docs/                   # Methodology, system overview, plans
+  METHODOLOGY.md        # Workflow philosophy and patterns
+  SYSTEM_OVERVIEW.md    # How the four-layer framework fits together
+  GLOBAL_SETUP.md       # How to configure the global layer
+  plans/                # Design docs and implementation plans
+.claude/
+  rules/                # Modular rules loaded via @ directives
+    architecture.md
+    testing.md
+    module-decomposition.md
+AGENTS.md               # Core agent process rules
+CLAUDE.md               # Entry point, loads AGENTS.md + rules
+PROJECT_CONTEXT.md      # This file
 ```
 
 ## Commands
 
 ```bash
-# Environment
-[TODO]         # Setup/install dependencies
-
-# Development
-[TODO]         # Run dev server
-[TODO]         # Run tests
-[TODO]         # Run single test file
-
-# Quality
-[TODO]         # Lint
-[TODO]         # Type check
-[TODO]         # Format
+# No build or test commands — this is a documentation repo.
 
 # Security
-snyk test      # Check dependencies for vulnerabilities
-snyk code test # Static code analysis
-
-# Build
-[TODO]         # Build for production
+snyk code test          # Static analysis (if scripts are added)
 ```
 
 ## Architecture
 
 ### Stack
-- Framework: [TODO]
-- Database: [TODO]
-- Testing: [TODO]
+- Format: Markdown
+- Loaded by: Claude Code via `@` directives in CLAUDE.md
+- Rules location: `.claude/rules/`
+- Docs location: `docs/`
 
 ### Key Patterns
-- [TODO]: [Brief explanation]
+- **Progressive disclosure**: CLAUDE.md → AGENTS.md → `.claude/rules/*.md`
+- **Rule files**: Modular, single-purpose, loaded on every session
+- **Design docs**: Saved to `docs/plans/YYYY-MM-DD-*.md` per feature
 
 ## Current Status
 
 ### Recently Completed
-- [None yet]
+- Module decomposition workflow (2026-03-17): automatic scope control for large/greenfield projects
 
 ### In Progress
-- [Initial setup]
+- None
 
 ### Known Issues
-- [None yet]
+- None
 
 ## Environment Variables
 
-Required in `.env`:
-```
-[TODO]
-```
+None required.
 
 ---
 
-*Last updated: [DATE]*
+*Last updated: 2026-03-17*
