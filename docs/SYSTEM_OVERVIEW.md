@@ -78,7 +78,8 @@ Loads it      Hook prompts: "Set up with bootstrap?"
 └── .claude/
     ├── rules/                      # Modular rules
     │   ├── architecture.md
-    │   └── testing.md
+    │   ├── testing.md
+    │   └── module-decomposition.md
     └── settings.local.json         # Project-specific permissions
 ```
 
