@@ -71,6 +71,18 @@ From Thariq (@trq212, Claude Code team):
 - Spec becomes documentation
 - Execution session has clean context
 
+## Module Decomposition (Large Projects)
+
+From the [module-decomposition rule](.claude/rules/module-decomposition.md):
+
+When scope is large (>3 files, >300 LOC, or greenfield), decompose before designing:
+
+1. **Map modules** — name each component, its interfaces, estimated size, and independence
+2. **Approve the map** — user reviews before design proceeds
+3. **Build sequentially** — one module at a time, with explicit review gates between each
+
+**Primary goal:** Prevent scope creep. When in doubt, exclude and flag for later.
+
 ## TDD for Code Projects
 
 When the project has testable logic:
