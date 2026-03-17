@@ -73,7 +73,7 @@ From Thariq (@trq212, Claude Code team):
 
 ## Module Decomposition (Large Projects)
 
-From the [module-decomposition rule](.claude/rules/module-decomposition.md):
+From the [module-decomposition rule](../.claude/rules/module-decomposition.md):
 
 When scope is large (>3 files, >300 LOC, or greenfield), decompose before designing:
 
